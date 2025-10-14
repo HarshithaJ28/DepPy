@@ -1,4 +1,4 @@
-# DepPy — Smart Package Doctor
+# DepPy - Smart Package Doctor
 
 **DepPy** (Smart Package Doctor) is a deterministic dependency conflict detector and resolver for Python projects. By analyzing a requirements-style file, building a transitive dependency graph using PyPI metadata, and detecting version conflicts between top-level pins and transitive requirements, DepPy produces a pinned `requirements_final.txt` with suggested fixes.
 
@@ -167,20 +167,20 @@ ASCII pipeline diagram (high-level):
                 +---------+----------+
                           |
                           v
-                +--------------------+
+                +---------------------+
                 | Candidate Collection|
-                +---------+----------+
+                +---------+-----------+
                           |
                           v
-                +--------------------+
+                +---------------------+
                 | Solver Orchestration|
-                | (OR-Tools / PuLP)  |
-                +---------+----------+
+                | (OR-Tools / PuLP)   |
+                +---------+-----------+
                           |
                           v
-                +--------------------+
+                +------------------------+
                 | requirements_final.txt |
-                +--------------------+
+                +------------------------+
 ```
 
 ---
@@ -201,9 +201,3 @@ python -m spdoctor.cli requirements_hard.txt --workers 8
 ```
 
 * Solver stage (MILP / OR-Tools) may dominate time for very large, highly-constrained graphs, but overall resolution is faster and more accurate than traditional approaches.
-
----
-
-## License
-
-This repository currently does not include a license file. Add `LICENSE` (for example, MIT) before publishing to GitHub if you want broad reuse.
