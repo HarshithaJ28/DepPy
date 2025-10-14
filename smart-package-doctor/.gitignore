@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.Python
+env/
+.venv/
+spvenv/
+build/
+dist/
+*.egg-info/
+*.egg
+.pytest_cache/
+/.mypy_cache/
+.vscode/
+.DS_Store
+data/pypi_cache/
+requirements_final.txt
+*.zip
