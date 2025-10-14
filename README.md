@@ -1,8 +1,6 @@
-# Smart Package Doctor
+# DepPy — Smart Package Doctor
 
-Smart Package Docto is a deterministic dependency conflict detector and resolver for Python projects. It analyzes a requirements-style file, builds a dependency graph using PyPI metadata, detects version conflicts between top-level pins and transitive requirements, and produces a pinned `requirements_final.txt` with suggested fixes. The tool emphasizes determinism (heuristics + MILP/OR-Tools solvers), reproducible suggestions, and fast single-command operation.
-
-This README is written to be "resume-worthy": it documents the problem domain, the architecture and technical decisions, usage examples, integration notes, and development instructions so other developers can easily evaluate, extend, or reuse the project.
+DepPy (Smart Package Doctor) is a deterministic dependency conflict detector and resolver for Python projects. It analyzes a requirements-style file, builds a dependency graph using PyPI metadata, detects version conflicts between top-level pins and transitive requirements, and produces a pinned `requirements_final.txt` with suggested fixes. The tool emphasizes determinism (heuristics + MILP/OR-Tools solvers), reproducible suggestions, and fast single-command operation.
 
 ---
 
@@ -34,33 +32,8 @@ This README is written to be "resume-worthy": it documents the problem domain, t
 - packaging: version and specifier parsing
 - OR-Tools (optional): CP-SAT solver for constrained selection
 - PuLP (optional): MILP fallback solver
-# Smart Package Doctor — friendly, powerful, resume-worthy
 
-Smart Package Doctor helps developers and teams quickly find and fix dependency conflicts in Python projects. It reads a requirements-style file, builds a transitive dependency graph using PyPI metadata, detects incompatibilities between top-level pins and transitive requirements, and suggests a deterministic, solver-backed set of pinned versions.
-
-This README is written for two audiences:
-- Developers who want a one-command fix for a requirements file.
-- Engineers who want to evaluate the project and reuse its components in CI or other tools.
-
-Quick overview: fast, deterministic, and production-ready.
-
----
-
-## Why this exists (simple)
-
-- Dependency hell is real: packages often require different versions of shared libraries.
-- Human review is slow; fully automatic upgrades can break runtime behavior.
-- Smart Package Doctor gives clear, auditable suggestions and generates a pinned `requirements_final.txt` so deployments are reproducible.
-
----
-
-## Highlights (in one paragraph)
-
-Smart Package Doctor uses a dependency graph (NetworkX), deterministic heuristics, and optional optimization backends (OR-Tools CP-SAT and PuLP MILP) to select versions that satisfy transitive constraints while minimizing unnecessary changes. It is fast (parallel metadata fetches, in-memory caching), friendly (grouped conflict output via `rich`), and designed for easy integration into CI or developer workflows.
-
----
-
-## Tech stack & why it matters (resume-friendly)
+## Tech stack & why it matters
 
 - Python 3.10+ — modern typing and ecosystem compatibility.
 - NetworkX — models dependency graphs cleanly for traversal and constraint propagation.
@@ -86,7 +59,7 @@ Minimal (one-liner)
 python -m spdoctor.cli requirements.txt
 ```
 
-If this repository includes a bundled virtual environment named `spvenv`, you can activate it and run the CLI immediately without installing dependencies:
+This repository includes a bundled virtual environment named `spvenv`, you can activate it and run the CLI immediately without installing dependencies:
 
 PowerShell (Windows):
 
@@ -209,23 +182,3 @@ flake8 spdoctor
 This demonstrates system design, algorithms, and practical trade-offs between speed, determinism, and human interpretability.
 
 ---
-
-## Limitations & roadmap
-
-- Persistent cross-run cache (SQLite) for faster cold starts.
-- Optional async HTTP fetcher (aiohttp) to increase throughput.
-- Add a `--profile` mode to log per-stage timings for performance tuning.
-
----
-
-## Contributing
-
-- Open an issue for new features or bugs.
-- Create small, focused PRs with tests.
-- Follow the existing code style (PEP8) and include a short description of algorithm changes.
-
----
-
-## License
-
-This repository currently does not include a license file. Add `LICENSE` (for example, an MIT license) before publishing to GitHub if you want broad reuse.
