@@ -1,6 +1,6 @@
 # Smart Package Doctor
 
-Smart Package Doctor is a deterministic dependency conflict detector and resolver for Python projects. It analyzes a requirements-style file, builds a dependency graph using PyPI metadata, detects version conflicts between top-level pins and transitive requirements, and produces a pinned `requirements_final.txt` with suggested fixes. The tool emphasizes determinism (heuristics + MILP/OR-Tools solvers), reproducible suggestions, and fast single-command operation.
+Smart Package Docto is a deterministic dependency conflict detector and resolver for Python projects. It analyzes a requirements-style file, builds a dependency graph using PyPI metadata, detects version conflicts between top-level pins and transitive requirements, and produces a pinned `requirements_final.txt` with suggested fixes. The tool emphasizes determinism (heuristics + MILP/OR-Tools solvers), reproducible suggestions, and fast single-command operation.
 
 This README is written to be "resume-worthy": it documents the problem domain, the architecture and technical decisions, usage examples, integration notes, and development instructions so other developers can easily evaluate, extend, or reuse the project.
 
